@@ -9,18 +9,22 @@ public class Customers {
     private LinkedList<Customer> customers;
     private String filePath;
 
+    // Time Complexity: O(1)
     public Customers() {
         customers = new LinkedList<>();
     }
-
+// Time Complexity: O(1)
     public Customers(LinkedList<Customer> input_customers) {
         customers = input_customers;
     }
-
+    
+// Time Complexity: O(1)
     public void setFilePath(String path) { this.filePath = path; }
 
+    // Time Complexity: O(1)
     public LinkedList<Customer> get_customers() { return customers; }
 
+    // Time Complexity: O(n)
     public Customer searchById(int id) {
         if (customers.empty()) return null;
         customers.findfirst();
@@ -32,6 +36,7 @@ public class Customers {
         return null;
     }
 
+    // Time Complexity: O(n)
     public void addCustomer(Customer c) {
         if (searchById(c.getCustomerId()) == null) {
             customers.addLast(c);
@@ -42,6 +47,7 @@ public class Customers {
         }
     }
 
+    // Time Complexity: O(n)
     public void displayAll() {
         if (customers.empty()) {
             System.out.println(" No customers found!");
@@ -55,13 +61,13 @@ public class Customers {
             customers.findenext();
         }
     }
-
+// Time Complexity: O(1)
     public static Customer convert_String_to_Customer(String Line) {
         String a[] = Line.split(",", 3);
         Customer p = new Customer(Integer.parseInt(a[0].trim()), a[1].trim(), a[2].trim());
         return p;
     }
-
+// Time Complexity: O(n)
     public void loadCustomers(String fileName) {
         try {
             filePath = fileName;
@@ -82,6 +88,7 @@ public class Customers {
         }
     }
 
+    // Time Complexity: O(n)
     private void saveAll() {
         if (filePath == null || filePath.isEmpty()) return;
         try (PrintWriter pw = new PrintWriter(new FileWriter(filePath))) {
@@ -99,4 +106,5 @@ public class Customers {
             System.out.println("Error saving customers: " + e.getMessage());
         }
     }
+
 }
