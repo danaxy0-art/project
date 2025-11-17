@@ -7,6 +7,7 @@ public class Customer {
     private LinkedList<Order> orders;
     private LinkedList<Review> reviews;
 
+    // Time Complexity: O(1)
     public Customer(int id, String name, String email) {
         this.customerId = id;
         this.name = name;
@@ -14,14 +15,18 @@ public class Customer {
         this.orders = new LinkedList<>();
         this.reviews = new LinkedList<>();
     }
-
+// Time Complexity: O(1)
     public int getCustomerId() { return customerId; }
+    // Time Complexity: O(1)
     public String getName() { return name; }
+    // Time Complexity: O(1)
     public String getEmail() { return email; }
 
+    // Time Complexity: O(n)
     public void addOrder(Order o) { orders.addLast(o); }
     public void addReview(Review r) { reviews.addLast(r); }
 
+    // Time Complexity: O(n)
     public void displayReviews() {
         System.out.println("Reviews for " + name + ":");
         if (reviews.empty()) {
@@ -36,6 +41,7 @@ public class Customer {
         }
     }
 
+    // Time Complexity: O(n)
     public void display() {
         System.out.println("Customer ID: " + customerId);
         System.out.println("Name: " + name);
@@ -44,7 +50,8 @@ public class Customer {
         displayOrders();
         displayReviews();
     }
-
+    
+// Time Complexity: O(n)
     public void displayOrders() {
         if (orders.empty()) {
             System.out.println("No orders for customer " + name);
@@ -58,4 +65,5 @@ public class Customer {
             orders.findenext();
         }
     }
+
 }
